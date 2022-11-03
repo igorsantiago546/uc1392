@@ -22,3 +22,10 @@ h3{
 div{
     border: 3px solid green;
 }
+
+.container{
+    background-color: lightgrey;
+}
+#nome-empresa{
+    color: brown;
+}
