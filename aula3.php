@@ -26,7 +26,7 @@ date_timezone_set($date, timezone_open('Pacific/Chatham'));
 echo date_format($date, 'Y-m-d H:i:sP') . "\n";
 */
 $valor = 78.98;
-$idade = 32;
+$idade = 30;
 $teste = true;
 
 // final - declaração de variáveis
@@ -46,9 +46,17 @@ print_r($pontos);
 echo("<br>");
 
 // estrutura de decisão
-if (!$teste){ //se verdadeiro então
-    echo("Teste retornou verdadeiro");
-}else{// senão
-    echo("Teste retornou Falso");
+if (!($idade>=30)){ //se verdadeiro então
+    echo("Aluno em lista para classificação");
 }
+
+$a = 9; $b = 9;
+if($a > $b){
+    echo("O valor '$a' é a maior '$b'");
+}elseif($a < $b){
+    echo("O valor '$b' é a maior '$a'");
+}else{
+    echo("O valor '$a' é igual a '$b");
+}
+
 ?>
