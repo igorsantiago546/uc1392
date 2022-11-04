@@ -32,14 +32,14 @@
             <td>1288</td>
             <td>Leonardo</td>
             <td>2185-7500</td>
-            <td><?php echo($premio * 0.50); ?></td>
+            <td><?php echo($premio * 0.13); ?></td>
         </tr>
         
         <tr>
             <td>1285</td>
             <td><?php echo($nome); ?></td>
             <td>2185-8200</td>
-            <td><?php echo($premio * 0.60); ?></td>
+            <td><?php echo($premio * 0.07); ?></td>
         </tr>
     </table>
 
