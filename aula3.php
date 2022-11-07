@@ -32,7 +32,7 @@ $teste = true;
 // final - declaração de variáveis
 
 
-// estruturas de repetição
+
 
 // declaração e uso de matrizes
 $alunos = array();
@@ -59,4 +59,16 @@ if($a > $b){
     echo("O valor '$a' é igual a '$b");
 }
 
+
+// estruturas de repetição
+while ($a < 11) { // tabuada de um número
+    echo($n. ' x '.$i. " = " .($i*$n)."<br>");
+echo("<br>");
+
+$nota = array(9,8,7,4);
+
+} for ($i=0; $i < 4; $i++) {
+    echo($nota[$i]);
+    echo("<br>");
+}
 ?>
