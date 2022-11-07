@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-       <!-- <meta http-equiv="refresh" content="1">  -->
-    </head>
-</html>
+
 <?php 
 // "/* */" comentário de bloco 
 // "//" comentário de linha
@@ -61,14 +56,67 @@ if($a > $b){
 
 
 // estruturas de repetição
-while ($a < 11) { // tabuada de um número
-    echo($n. ' x '.$i. " = " .($i*$n)."<br>");
-echo("<br>");
 
-$nota = array(9,8,7,4);
-
-} for ($i=0; $i < 4; $i++) {
-    echo($nota[$i]);
-    echo("<br>");
+// declaração e uso de matrizes
+$pessoas = array(
+    '98H470'=>(['Well', 'Professor']),
+    '25P45F'=>(['Paloma', 'Linda']),
+    '85U41R'=>(['Ellen', 'Fofa']),
+    '75Z78J'=>(['Helen', 'Maravilha'])
+);
+if (isset($_GET['enviar'])){ //se o usuário clicar no botão
+    $id_frm = $_GET['id'];
+    $nome_frm = $_GET['nome'];
+    $descri_frm = $_GET['descricao'];
+    $pessoas += [$id_frm => ([$nome_frm, $descri_frm])];
 }
+
+
+
+
+
+
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <form action="#" method="get">
+            <label for="id">
+                Id
+                <input type="text" name="id" placeholder="Entre com o id" required>
+            </label><br>
+            <label for="nome">
+                Nome
+                <input type="text" name="nome" placeholder="Digite o nome" required>
+            </label><br>
+            <label for="descricao">
+                Descrição
+                <input type="text" name="descricao">
+            </label><br>
+            <button type="submit" name="enviar" id="btn-enviar">Enviar</button>
+        </form>
+        <table class="tabelinha">
+            <th>id</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <tr>
+                <td>10Y96B</td>
+                <td>Nathalia</td>
+                <td>fofinha</td>
+            </tr>
+            <?php foreach ($pessoas as $id => $nome) {?>
+                <tr>
+                    <td><?php echo($id); ?></td>
+                    <td><?php echo($nome[0]); ?></td>
+                    <td><?php echo($nome[1]); ?></td>
+                </tr>
+            <?php }?>
+                
+        
+            </tr>
+        </table>
+    </body>
+</html>
