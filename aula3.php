@@ -49,14 +49,21 @@ $a = 9; $b = 9;
 if($a > $b){
     echo("O valor '$a' é a maior '$b'");
 }elseif($a < $b){
-    echo("O valor '$b' é a maior '$a'");
+    echo("O valor '$a' é menor '$b'");
 }else{
     echo("O valor '$a' é igual a '$b");
 }
-
-
+echo('<br>');
+$n = 9;
 // estruturas de repetição
-
+while ($a <= 10) {
+    echo($n.' x '.$a." = ".($a*$n)."<br>");
+    $a = $a +1;
+}
+echo('<br>');
+for ($i=1; $i < 11; $i++){
+    echo($n.' x '.$i." = ".($i*$n)."<br>"); 
+}
 // declaração e uso de matrizes
 $pessoas = array(
     '98H470'=>(['Well', 'Professor']),
