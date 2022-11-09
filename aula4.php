@@ -1,6 +1,6 @@
-<?php 
-include ('config.php');
-include ('funcoes.php');
+<?php
+include('config.php');
+include('funcoes.php');
 
 $parcelas = array();
 $coeficiente = 0.0;
@@ -11,9 +11,15 @@ if(isset($_POST['calcular']))
     $parcela = $_POST['parcela'];
     $coeficiente = parcelar(floatval($taxa), intval($parcela));
 
-    $parcelas = ([$capital, $taxa,$parcela,$coeficiente*$capital]);
+    $montante = $coeficiente*$capital*$parcela;
+    $dias = 30;
+    for ($i=0; $i < $parcela; $i++) { 
+        $parcelas[$i] = [($i+1).' ª ',($coeficiente*floatval($capital)),new DateTime('+'.($i+1).'month')];    // 'new DateTime('+'.$dias.'days')];'  para  contar 30 dias
+        $dias += 30; // $dias = $dias
+        
+    }
+    // print_r($parcelas);
 }
-
 
 
 ?>
@@ -23,20 +29,37 @@ if(isset($_POST['calcular']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parcelamento</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+
     <form action="#" method="post">
-        <input type="text" name="capital" placeholder="Capital..">
-        
-        <input type="text" name="taxa" placeholder="Taxa (%)..">
-        
-        <input type="text" name="parcela" placeholder="Parcelas (1)...">
+        <input type="text" name="capital" placeholder="Capital (R$)..."><br>
+        <input type="text" name="taxa" placeholder="Taxa (%)..."><br>
+        <input type="text" name="parcela" placeholder="Parcelas (1)..."><br>
         <button type="submit" name="calcular">Calcular</button>
     </form>
     <br><hr>
-    <?php if(count($parcelas)>0){?> 
-    <h3>Valor da parcela:R$ <?php echo $parcelas[3]; ?></h3>
-    <?php } ?>
+    <?php if(count($parcelas)>0){?>
+        <h4>Valor da Capital: R$ <?php echo number_format($capital,2,',','.'); ?></h4>
+        <h4>Taxa de juro: <?php echo number_format($taxa,2,',','.'); ?> %</h4>
+        <h4>Parcelas: <?php echo $parcela; ?> meses</h4>
+        <h4>Total do Financiamento <?php echo number_format($montante,2,',','.'); ?> </h4>
+        <table class="tabelinha2">
+            <th>#</th>
+            <th>Valor</th>
+            <th>Vencimento</th>
+            
+    <?php 
+        foreach ($parcelas as $valores) { // estrutura de loop 
+            ?>
+            <tr>
+                <td><?php echo($valores[0]);?></td>
+                <td><?php echo ' R$ ' .number_format($valores[1],2,',','.');?></td>
+                <td><?php echo $valores[2]->format('d/m/Y');?></td>
+            </tr>
+            <?php } ?>
+        </table>
+        <?php }?>
 </body>
 </html>

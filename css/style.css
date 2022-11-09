@@ -46,3 +46,14 @@ input{margin-bottom: 10px;}
 #btn-enviar{
     margin-bottom: 20px;
 }
+
+.tabelinha2 th,td{
+    border: 1px solid rgb(44, 15, 124);
+
+}
+.tabelinha2 { border: 2px solid;}
+
+.tabelinha2 th,td{
+    padding: 10px;
+    
+}
