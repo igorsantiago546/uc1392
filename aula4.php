@@ -12,10 +12,10 @@ if(isset($_POST['calcular']))
     $coeficiente = parcelar(floatval($taxa), intval($parcela));
 print_r($_POST);
     $data = date('d/m/Y');
-    $dias = 30;
+    $dia = 30;
     for ($i=0; $i < $parcela; $i++) { 
-        $parcelas += ([($i+1).'ª',($coeficiente*floatval($capital)),date($data,strtotime('+'.$dias.' days'))]);
-        $dias += 30; 
+        $parcelas += ([($i+1).'ª',($coeficiente*floatval($capital)),date($data,strtotime('+'.$dia.' days'))]);
+        $dia += 30; 
     }
     print_r($parcelas);
 }

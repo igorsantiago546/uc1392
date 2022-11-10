@@ -99,6 +99,11 @@ if (isset($_POST['enviar'])){  // se o usuário clicar no botão
             <br>
             <hr>
         </form>
+        <form action="signos.php" method="post">
+            <button type="submit">Next</button>
+            <br>
+            <hr>
+        </form>
         <form action="#" method="post">
             <label for="id">
                 Id

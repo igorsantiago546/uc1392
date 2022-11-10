@@ -46,3 +46,7 @@ input{margin-bottom: 10px;}
 #btn-enviar{
     margin-bottom: 20px;
 }
+
+.tb_signos th,td {
+    padding: 60px;
+}
