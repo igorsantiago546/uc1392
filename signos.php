@@ -23,7 +23,15 @@ if (isset($_POST['result'])){  // se o usuário clicar no botão
     $signos += [$dia_frm => ([$mes_frm])];
 }
 // colocando variaveis 
+$aries_i = new DateTime('21-03-2022');
 
+
+$aries_i = date("d/m");
+$aries_i = explode("/", $aries_i);
+list($dia, $mes) = $aries_i;
+$aries_i = "$dia/$mes";
+echo $aries_i;
+echo data(new DateTime());
 
 
 
@@ -48,7 +56,7 @@ if (isset($_POST['result'])){  // se o usuário clicar no botão
         </label><br>
         <button type="submit" name="result" id="btn-enviar">Enviar</button>
     </form>
-    <?php echo signos_dm(new DateTime($signos[0])); ?>    
+    <?php echo signos_dm(new DateTime()); ?>    
     <table class="tb_signos">
         <th>Signo</th>
         <th>Data</th>

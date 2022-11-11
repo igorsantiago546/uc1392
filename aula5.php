@@ -21,7 +21,7 @@
     echo $data->format('d-m-Y');
     echo '<br>';
 
-    $dataNascimento = new DateTime('2003-02-16');
+    $dataNascimento = new DateTime('16-02-2003');
     $intervalo = $dataNascimento->diff(new DateTime());
     print_r($intervalo);
     echo '<br>';
