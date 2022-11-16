@@ -90,7 +90,7 @@ if (isset($_POST['enviar'])){  // se o usuário clicar no botão
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-
+        <link rell="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -100,7 +100,6 @@ if (isset($_POST['enviar'])){  // se o usuário clicar no botão
             <hr>
         </form>
         <form action="signos.php" method="post">
-            <button type="submit">Next</button>
             <br>
             <hr>
         </form>

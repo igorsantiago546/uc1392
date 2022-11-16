@@ -47,6 +47,7 @@ input{margin-bottom: 10px;}
     margin-bottom: 20px;
 }
 
+
 .tabelinha2 th,td{
     border: 1px solid rgb(44, 15, 124);
 
@@ -56,4 +57,8 @@ input{margin-bottom: 10px;}
 .tabelinha2 th,td{
     padding: 10px;
     
+}
+.tb_signos th,td {
+    padding: 60px;
+
 }

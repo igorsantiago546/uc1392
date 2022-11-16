@@ -22,6 +22,7 @@ if (isset($_POST['result'])){  // se o usuário clicar no botão
     $mes_frm = $_POST['mes'];
     $signos += [$dia_frm => ([$mes_frm])];
 }
+
 print_r($signos);
 // colocando variaveis 
 
@@ -58,6 +59,12 @@ if ($int >= $int2){
 
 print_r($aries_i);
 print_r($aries_f);
+
+// colocando variaveis 
+
+
+
+
 
 ?>
 

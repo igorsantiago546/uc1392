@@ -1,4 +1,5 @@
 <?php 
+
 require 'config.php';
 require 'funcoes.php';
 // datas e strings
@@ -29,5 +30,6 @@ echo $intervalo->format('%y anos, %m e %d dias');
 
 echo '<br>';
 echo dataTexto(new DateTime('1932-10-29'));
+
 
 ?>
