@@ -1,29 +1,38 @@
 <?php 
+
 include 'conecta.php';
 
 // cria a consulta sql
-$consulta = "select * from  filme";
+$consulta = "select * from filme";
 
-// trazer a lista completa dos dados
-$lista = $pdo->query($consulta);
+// trazer a lista completa dos dados 
+$lista = $pdo->query("$consulta");
 
 // separar os dados em linhas
-$linha = $lista->fetch(); //usar uma matraiz associativa
-$num_linhas = $lista->rowCount(); //rowCount retorna o numero inteiro 
 
-// echo 'A consulta retornou <strong>'.$num_linhas.'</strong> filmes <br>'; 
-// print_r($linha);
-//  do {
-//      echo $linha['titulo'].' - '.$linha['lancamento'].'<br>';
-//  } while ($linha = $lista->fetch());
+$linha = $lista->fetch();
+$num_linhas = $lista->rowCount();
+// echo 'A consulta retornou <stong>'.$num_linhas. ' </strong> Filmes <br>';
+
+// do{
+//     echo $linha['titulo'].' - '.$linha['lancamento'].'<br>';
+// }while($linha = $lista -> fetch());
+
+//print_r($linha);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmes <?php echo '('.$num_linhas.')'?> </title>
+    <link rel="stylesheet" href="css/style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes <?php echo '(' .$num_linhas.')' ?></title>
+    <style>
+    /* td{
+        border-bottom: 1px solid black; 
+    }</style> */
 </head>
 <body>
     <table>
@@ -34,14 +43,14 @@ $num_linhas = $lista->rowCount(); //rowCount retorna o numero inteiro
             <th>Lançamento</th>
         </thead>
         <tbody>
-            <?php do { ?>
+            <?php do {?>
                 <tr>
-                    <td><?php echo $linha['cod_filme']?></td>
-                    <td><?php echo $linha['titulo']?></td>
-                    <td><?php echo $linha['sinopse']?></td>
-                    <td><?php echo $linha['lancamento']?></td>
+                    <td><?php echo $linha['cod_filme'];?></td>
+                    <td><?php echo $linha['titulo'];?></td>
+                    <td><?php echo $linha['sinopse'];?></td>
+                    <td><?php echo $linha['lancamento'];?></td>
                 </tr>
-            <?php } while ($linha = $lista->fetch());?>
+            <?php }while($linha = $lista->fetch());?>
         </tbody>
     </table>
 </body>

@@ -1,64 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap');
 @import url('reset.css');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+
 html{
     margin-left: 10px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Courier New', Courier, monospace;
 }
-
 h1{
     font-weight: 700;
     font-size: 2em;
 }
 
 h2{
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.8em;
 }
 
 h3{
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.6em;
 }
 
-div{
-    border: 3px solid green;
-}
 
 .container{
-    background-color: lightgrey;
+    background-color: lightslategray;
 }
+
 #nome-empresa{
     color: brown;
 }
-.tabelinha th,td{
-    border: 1px solid rgb(44, 15, 124);
 
+.tabelinha th, td{
+    border: 0.5px solid rgb(2, 1, 1);
 }
-.tabelinha { border: 2px solid;}
 
-.tabelinha th,td{
+.tabelinha th, td{
     padding: 10px;
-    
 }
-th{font-weight: 700;}
-input{margin-bottom: 10px;}
-
+.tabelinha{
+    border: 2px solid;
+}
+th{
+    font-weight: 700;
+}
+input{
+    margin-bottom: 10px;
+}
 #btn-enviar{
     margin-bottom: 20px;
 }
-
-
-.tabelinha2 th,td{
-    border: 1px solid rgb(44, 15, 124);
-
-}
-.tabelinha2 { border: 2px solid;}
-
-.tabelinha2 th,td{
-    padding: 10px;
-    
-}
-.tb_signos th,td {
-    padding: 60px;
-
+.formulario{
+    background-color: rgb(23, 199, 199);
+    padding: 15px;
 }
