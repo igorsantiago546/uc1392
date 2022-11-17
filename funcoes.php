@@ -9,14 +9,11 @@ function dataTexto(DateTime $data){
     return $intervalo->format('%y anos, %m meses, %d dias');
 
 }
-
-function signos_dm(DateTime $date){
-    $intervalo = $date->diff(new DateTime());
-    return $intervalo->format('Você nasceu no dia %d, no mês %m');
-}
-
-function data(DateTime $data){
-    $intervalo = $data->diff(new DateTime('21-03-2003'));
-    return $intervalo->format('21-03');
-} 
 ?>
+
+<!-- 
+function data(DateTime $data){
+    $intervalo = $data->diff(new DateTime());
+    return $intervalo->format("Você nasceu no dia %d, no mês %m");
+} 
+?> -->
