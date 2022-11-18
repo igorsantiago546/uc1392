@@ -24,6 +24,13 @@ $row = $lista->fetch();
 
 $num_rows = $lista->rowCount();
 
+// busca cliente por código
+
+if (isset($_GET['codedit']))
+{
+    echo "<h1>Você vai editar o cliente ".$_GET['codedit']."</h1>";
+}
+
 if(isset($_POST['enviar'])) // inserir ou alterar
 {
     $nome = $_POST['nome'];
@@ -48,7 +55,7 @@ if(isset($_POST['enviar'])) // inserir ou alterar
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rell="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Clientes (<?php echo $num_rows?>)</title>
 
     <style>
@@ -99,6 +106,8 @@ if(isset($_POST['enviar'])) // inserir ou alterar
 
             <th>CPF</th>
 
+            <th colspan="2">Ações</th> 
+
         </thead>
 
         <tbody>
@@ -112,6 +121,9 @@ if(isset($_POST['enviar'])) // inserir ou alterar
                     <td><?php echo $row['nome'];?></td>
 
                     <td><?php echo $row['cpf'];?></td>
+
+                    <td><a href="cliente.php?codedit=<?php echo $row['cod_cliente'];?>">Editar</a></td>  
+                    <td><a href="cliente.php?codarq=<?php echo $row['cod_cliente'];?>">Arquivar</a></td>
 
                 </tr>
 
