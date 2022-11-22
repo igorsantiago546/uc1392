@@ -9,5 +9,13 @@ function dataTexto(DateTime $data){
     return $intervalo->format('%y anos, %m meses, %d dias');
 
 }
-
 ?>
+
+
+<!-- 
+function data(DateTime $data){
+    $intervalo = $data->diff(new DateTime());
+    return $intervalo->format("Você nasceu no dia %d, no mês %m");
+} 
+?> -->
+
