@@ -166,6 +166,15 @@ if (isset($_POST['alterar']))
                     <input type="number" name="preco" required value="<?php echo $preco;?>">
                 </label>
             </div>
+            <div>
+                            <label for="Classificacao">
+                                Classificação
+                                <select name="class" id="">
+                                    <?php do { ?>
+                                    <option value="<?php echo $rowClass['id']?>"><?php echo $rowClass['class']?></option>
+                                    <?php } while($rowClass = $listaClass->fetch());?>
+                                </select>
+                            </label>
             <!-- <div>
             <label for="genero">
                     Genero

@@ -2,7 +2,7 @@
 include 'conecta.php';
 
 //cria a consulta sql
-$consulta = "select * from funcionario where demissao is null";
+$consulta = "SELECT * FROM funcionario where demissao is null order by nome, cpf asc";
 // $consultaSql= "SELECT * FROM funcionario where demissao is not null";
 $consultaArqSql= "SELECT * FROM funcionario where demissao is not null order by nome, cod_func asc";
 
@@ -90,7 +90,7 @@ if(isset($_POST['enviar'])) // inserir ou alterar
     $va = $_POST['va'];
 
 
-    $consulta = "insert funcionario (nome, cpf, cargo, escala, turno, admissao, demissao, salario, vt, vr, va) values ('$nome','$cpf','$cargo','$escala','$turno','$admissao','$demissao','$salario','$vt','$vr','$va')";
+    $consulta = "insert funcionario (nome, cpf, cargo, escala, turno, admissao, salario, vt, vr, va) values ('$nome','$cpf','$cargo','$escala','$turno','$admissao','$salario','$vt','$vr','$va')";
     $resultado = $pdo->query($consulta);
     $_POST['enviar'] = null ;
     header('location: funcionario.php');
@@ -125,6 +125,7 @@ if (isset($_POST['alterar']))
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funcionarios (<?php echo $num_rows?>)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <section class="formulario">
@@ -132,43 +133,43 @@ if (isset($_POST['alterar']))
             <div hidden>
                 <label for="cod_funcionario">
                     Código
-                    <input type="text" name="cod-funcionario" value="<?php echo $cod;?>">
+                    <input class="form-control" type="text" name="cod-funcionario" value="<?php echo $cod;?>">
                 </label>
             </div>
             <div>
                 <label for="nome">
                     Nome
-                    <input type="text" name="nome" required value="<?php echo $nome;?>">
+                    <input class="form-control" type="text" name="nome" required value="<?php echo $nome;?>">
                 </label>
             </div>
             <div>
                 <label for="cpf">
                     CPF
-                    <input type="number" name="cpf" required value="<?php echo $cpf;?>">
+                    <input class="form-control" type="number" name="cpf" required value="<?php echo $cpf;?>">
                 </label>
             </div>
             <div>
                 <label for="cargo">
                     Cargo
-                    <input type="text" name="cargo" required value="<?php echo $cargo;?>">
+                    <input class="form-control" type="text" name="cargo" required value="<?php echo $cargo;?>">
                 </label>
             </div>
             <div>
                 <label for="escala">
                     Escala
-                    <input type="text" name="escala" required value="<?php echo $escala;?>">
+                    <input class="form-control" type="text" name="escala" required value="<?php echo $escala;?>">
                 </label>
             </div>
             <div>
                 <label for="turno">
                     Turno
-                    <input type="text" name="turno" required value="<?php echo $turno;?>">
+                    <input class="form-control" type="text" name="turno" required value="<?php echo $turno;?>">
                 </label>
             </div>
             <div>
                 <label for="admissao">
                     Admissão
-                    <input type="date" name="admissao" required value="<?php echo $admissao;?>">
+                    <input class="form-control" type="date" name="admissao" required value="<?php echo $admissao;?>">
                 </label>
             </div>
             <!-- <div>
@@ -180,25 +181,25 @@ if (isset($_POST['alterar']))
             <div>
                 <label for="salario">
                     Salário
-                    <input type="number" name="salario" required value="<?php echo $salario;?>">
+                    <input class="form-control" type="number" name="salario" required value="<?php echo $salario;?>">
                 </label>
             </div>
             <div>
                 <label for="vt">
                     VT
-                    <input type="number" name="vt" required value="<?php echo $vt;?>">
+                    <input class="form-control" type="number" name="vt" required value="<?php echo $vt;?>">
                 </label>
             </div>
             <div>
                 <label for="vr">
                     VR
-                    <input type="number" name="vr" required value="<?php echo $vr;?>">
+                    <input class="form-control" type="number" name="vr" required value="<?php echo $vr;?>">
                 </label>
             </div>
             <div>
                 <label for="va">
                     VA
-                    <input type="number" name="va" required value="<?php echo $va;?>">
+                    <input class="form-control" type="number" name="va" required value="<?php echo $va;?>">
                 </label>
             </div>
             <div>
@@ -207,7 +208,7 @@ if (isset($_POST['alterar']))
         </form>
     </section>
     <h3>Funcionários Ativos</h3>
-    <table>
+    <table class="table table-striped table-hover">
         <thead>
             <th hidden>ID</th>
             <th>Nome</th>
@@ -244,7 +245,7 @@ if (isset($_POST['alterar']))
         </tbody>
     </table>
     <h3>Funcionarios Arquivados</h3>
-    <table>
+    <table class="table table-striped table-hover">
         <thead>
         <th hidden>ID</th>
             <th>Nome</th>
@@ -282,4 +283,5 @@ if (isset($_POST['alterar']))
         </tbody>
     </table>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
