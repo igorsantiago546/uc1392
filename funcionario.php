@@ -2,11 +2,12 @@
 include 'conecta.php';
 
 //cria a consulta sql
-$consultaSql= "SELECT * FROM funcionario where demissao is not null";
+$consulta = "select * from funcionario where demissao is null";
+// $consultaSql= "SELECT * FROM funcionario where demissao is not null";
 $consultaArqSql= "SELECT * FROM funcionario where demissao is not null order by nome, cod_func asc";
 
 // trazer a lista completa dos dados
-$lista = $pdo->query($consultaSql);
+$lista = $pdo->query($consulta);
 $listaArq = $pdo->query($consultaArqSql);
 
 // separar os dados em linha
@@ -23,11 +24,12 @@ $cargo ="";
 $escala ="";
 $turno ="";
 $admissao ="";
-$demissao ="";
+// $demissao ="";
 $salario ="";
 $vt ="";
 $vr ="";
 $va ="";
+$cod = 0;
 
 if (isset($_GET['codedit']))
 {
@@ -40,7 +42,7 @@ if (isset($_GET['codedit']))
     $escala = $funcionario['escala'];
     $turno = $funcionario['turno'];
     $admissao = $funcionario['admissao'];
-    $demissao = $funcionario['demissao'];
+    // $demissao = $funcionario['demissao'];
     $salario = $funcionario['salario'];
     $vt = $funcionario['vt'];
     $vr = $funcionario['vr'];
@@ -64,13 +66,13 @@ if (isset($_GET['codres']))
     header('location: funcionario.php');
 }
 
-// remover definitivamente (LGPD)
-if (isset($_GET['codexc']))
-{
-   $queryExc = "delete from funcionario where cod_func=".$_GET['codexc'];
-    $funcionario = $pdo->query($queryExc)->fetch();
-    header('location: funcionario.php');
-}
+// // remover definitivamente (LGPD)
+// if (isset($_GET['codexc']))
+// {
+//    $queryExc = "delete from funcionario where cod_func=" . $_GET['codexc'];
+//     $funcionario = $pdo->query($queryExc)->fetch();
+//     header('location: funcionario.php');
+// }
 
 
 if(isset($_POST['enviar'])) // inserir ou alterar
@@ -81,7 +83,7 @@ if(isset($_POST['enviar'])) // inserir ou alterar
     $escala = $_POST['escala'];
     $turno = $_POST['turno'];
     $admissao = $_POST['admissao'];
-    $demissao = $_POST['demissao'];
+    // $demissao = $_POST['demissao'];
     $salario = $_POST['salario'];
     $vt = $_POST['vt'];
     $vr = $_POST['vr'];
@@ -97,21 +99,20 @@ if(isset($_POST['enviar'])) // inserir ou alterar
 if (isset($_POST['alterar']))
 {
     // altera os dados do funcionario
-    $cod = $_POST['cod-funcionario'];
     $nome = $_POST['nome'];
     $cpf =  $_POST['cpf'];
     $cargo = $_POST['cargo'];
     $escala = $_POST['escala'];
     $turno = $_POST['turno'];
     $admissao = $_POST['admissao'];
-    $demissao = $_POST['demissao'];
+    // $demissao = $_POST['demissao'];
     $salario = $_POST['salario'];
     $vt = $_POST['vt'];
     $vr = $_POST['vr'];
     $va = $_POST['va'];
-    $updateSql = "update funcionario set nome = '$nome', cpf='$cpf', cargo = '$cargo', escala = '$escala', turno = '$turno', admissao = '$admissao', demissao '$demissao', vt = '$vt', vr = '$vr', va = '$va' where cod_func = $cod";
+    $updateSql = "update funcionario set nome = '$nome', cpf='$cpf', cargo = '$cargo', escala = '$escala', turno = '$turno', admissao = '$admissao', vt = '$vt', vr = '$vr', va = '$va' where cod_func = $cod";
     $resultado = $pdo->query($updateSql);
-    header('location: cliente.php');
+    header('location: funcionario.php');
 }
 
 
@@ -170,11 +171,11 @@ if (isset($_POST['alterar']))
                     <input type="date" name="admissao" required value="<?php echo $admissao;?>">
                 </label>
             </div>
-            <div>
+            <!-- <div>
                 <label for="demissao">
                     Demissão
-                    <input type="date" name="demissao" value="<?php echo $demissao;?>">
-                </label>
+                    <input type="date" name="demissao" value=""> 
+                </label> -->
             </div>
             <div>
                 <label for="salario">
@@ -201,7 +202,7 @@ if (isset($_POST['alterar']))
                 </label>
             </div>
             <div>
-                <button type="submit" name="<?php echo $cod<1?'enviar':'alterar';?>"><?php echo $cod<1?'Enviar':'Alterar';?></button>
+                <button type="submit" name="<?php echo $cod < 1 ? 'enviar' : 'alterar' ; ?>"><?php echo $cod < 1 ? 'Enviar' : 'Alterar'; ?></button>
             </div>
         </form>
     </section>
@@ -215,7 +216,7 @@ if (isset($_POST['alterar']))
             <th>Escala</th>
             <th>Turno</th>
             <th>Admissão</th>
-            <th>Demissão</th>
+            <!-- <th>Demissão</th> -->
             <th>Salário</th>
             <th>VT</th>
             <th>VR</th>
@@ -232,7 +233,6 @@ if (isset($_POST['alterar']))
                     <td><?php echo $row['escala'];?></td>
                     <td><?php echo $row['turno'];?></td>
                     <td><?php echo $row['admissao'];?></td>
-                    <td><?php echo $row['demissao'];?></td>
                     <td><?php echo $row['salario'];?></td>
                     <td><?php echo $row['vt'];?></td>
                     <td><?php echo $row['vr'];?></td>
@@ -243,7 +243,7 @@ if (isset($_POST['alterar']))
             <?php } while ($row = $lista->fetch());?>
         </tbody>
     </table>
-    <h3>Funcionarios Ativos</h3>
+    <h3>Funcionarios Arquivados</h3>
     <table>
         <thead>
         <th hidden>ID</th>
@@ -253,12 +253,12 @@ if (isset($_POST['alterar']))
             <th>Escala</th>
             <th>Turno</th>
             <th>Admissão</th>
-            <th hidden>Demissão</th>
+            <!-- <th hidden>Demissão</th> -->
             <th>Salário</th>
             <th>VT</th>
             <th>VR</th>
             <th>VA</th>
-            <th colspan="2">Ações</th>
+            <th>Ações</th>
         </thead>
         <tbody>
             <?php do {?>
@@ -270,13 +270,12 @@ if (isset($_POST['alterar']))
                     <td><?php echo $rowArq['escala'];?></td>
                     <td><?php echo $rowArq['turno'];?></td>
                     <td><?php echo $rowArq['admissao'];?></td>
-                    <td hidden><?php echo $rowArq['demissao'];?></td>
                     <td><?php echo $rowArq['salario'];?></td>
                     <td><?php echo $rowArq['vt'];?></td>
                     <td><?php echo $rowArq['vr'];?></td>
                     <td><?php echo $rowArq['va'];?></td>
                     <td><a href="funcionario.php?codres=<?php echo $rowArq['cod_func'];?>">Restaurar</a></td>
-                    <td><a href="funcionario.php?codexc=<?php echo $rowArq['cod_func'];?>">Excluir</a></td>
+                    
                 
                 </tr>
             <?php } while ($rowArq = $listaArq->fetch())?>
