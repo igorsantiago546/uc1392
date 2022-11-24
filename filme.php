@@ -113,9 +113,11 @@ if (isset($_POST['alterar']))
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+    
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmes (<?php echo $num_linhas; ?>)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
     <!-- <style>
     /* td{
         border-bottom: 1px solid black; 
@@ -127,43 +129,43 @@ if (isset($_POST['alterar']))
             <div hidden>
                 <label for="cod-filme">
                     Código
-                    <input type="text" name="cod-filme" value="<?php echo $cod;?>">
+                    <input class="form-control" type="text" name="cod-filme" value="<?php echo $cod;?>">
                 </label>
             </div>
             <div>
             <label for="titulo">
                     Título
-                    <input type="text" name="titulo" required value="<?php echo $titulo;?>">
+                    <input class="form-control" type="text" name="titulo" required value="<?php echo $titulo;?>">
                 </label>
             </div>
             <div>
             <label for="sinopse">
                     Sinopse
-                    <input type="textarea" name="sinopse" required value="<?php echo $sinopse;?>">
+                    <input class="form-control" type="textarea" name="sinopse" required value="<?php echo $sinopse;?>">
                 </label>
             </div>
             <div>
             <label for="lancamento">
                     Lançamento
-                    <input type="date" name="lancamento" required value="<?php echo $lancamento;?>">
+                    <input class="form-control" type="date" name="lancamento" required value="<?php echo $lancamento;?>">
                 </label>
             </div>
             <div>
             <label for="pais_origem">
                     Pais de Origem
-                    <input type="text" name="pais_origem" required value="<?php echo $pais_origem;?>">
+                    <input class="form-control" type="text" name="pais_origem" required value="<?php echo $pais_origem;?>">
                 </label>
             </div>
             <div>
             <label for="duracao">
                     Duração
-                    <input type="number" name="duracao" required value="<?php echo $duracao;?>">
+                    <input class="form-control" type="number" name="duracao" required value="<?php echo $duracao;?>">
                 </label>
             </div>
             <div>
             <label for="preco">
                     Preço
-                    <input type="number" name="preco" required value="<?php echo $preco;?>">
+                    <input class="form-control" type="number" name="preco" required value="<?php echo $preco;?>">
                 </label>
             </div>
             <div>
@@ -218,7 +220,7 @@ if (isset($_POST['alterar']))
         </form>
     </section>
     <h3>Filmes Ativos</h3>
-     <table>
+     <table class="table table-striped table-hover">
         <thead>
             <?php if ($num_linhas > 0) { ?>
             <th hidden>ID</th>
@@ -251,7 +253,7 @@ if (isset($_POST['alterar']))
         </tbody>
     </table> 
     <h3>Filmes Arquivados</h3>
-    <table>
+    <table class="table table-striped table-hover">
         <thead>
             <?php if ($num_linhas_arq > 0) {?>
         <th hidden>ID</th>
@@ -285,4 +287,5 @@ if (isset($_POST['alterar']))
         </tbody>
     </table>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
