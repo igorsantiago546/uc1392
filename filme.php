@@ -9,12 +9,15 @@ $consultaSqlArq = "SELECT * FROM filme where deleted is not null order by titulo
 // trazer a lista completa dos dados 
 $lista = $pdo->query("$consulta");
 $listaArq = $pdo->query($consultaSqlArq);
+$listaClass = $pdo->query("select cod_classificacao as id, classificacoes as class from classificacao");
 
 // separar os dados em linhas
 
 $linha = $lista->fetch();
 $linhaArq = $listaArq->fetch();
+$linhaClass = $listaClass->fetch();
 $num_linhas = $lista->rowCount();
+$num_linhas_arq = $listaArq->rowCount();
 // echo 'A consulta retornou <stong>'.$num_linhas. ' </strong> Filmes <br>';
 
 // do{
@@ -163,6 +166,16 @@ if (isset($_POST['alterar']))
                     <input type="number" name="preco" required value="<?php echo $preco;?>">
                 </label>
             </div>
+            <div>
+                <label for="Classificacao">
+                    Classificação
+                    <select name="class" id="">
+                        <?php do { ?>
+                        <option value="<?php echo $linhaClasss['id']?>"><?php echo $linhaClass['class']?></option>
+                        <?php } while($linhaClass = $listaClass->fetch());?>
+                    </select>
+                </label>
+            </div>
             <!-- <div>
             <label for="genero">
                     Genero
@@ -207,6 +220,7 @@ if (isset($_POST['alterar']))
     <h3>Filmes Ativos</h3>
      <table>
         <thead>
+            <?php if ($num_linhas > 0) { ?>
             <th hidden>ID</th>
             <th>Título</th>
             <th>Sinopse</th>
@@ -229,12 +243,17 @@ if (isset($_POST['alterar']))
                     <td><a href="filme.php?codedit=<?php echo $linha['cod_filme'];?>">Editar</a></td>
                     <td><a href="filme.php?codarq=<?php echo $linha['cod_filme'];?>">Arquivar</a></td>
                 </tr>
-            <?php } while ($linha = $lista->fetch())?>
+            <?php } while ($linha = $lista->fetch());
+            } else {
+                echo "<tr><td colspan=5>Não há filmes Cadastrados</td></tr>";
+            }
+            ?>
         </tbody>
     </table> 
     <h3>Filmes Arquivados</h3>
     <table>
         <thead>
+            <?php if ($num_linhas_arq > 0) {?>
         <th hidden>ID</th>
             <th>Título</th>
             <th>Sinopse</th>
@@ -258,7 +277,11 @@ if (isset($_POST['alterar']))
                     <td><a href="filme.php?codexc=<?php echo $linhaArq['cod_filme'];?>">Excluir</a></td>
                 
                 </tr>
-            <?php } while ($linhaArq = $listaArq->fetch())?>
+            <?php } while ($linhaArq = $listaArq->fetch());
+            } else {
+                echo "<tr><td colspan=5>Não há filmes arquivados</td></tr>";
+            }
+            ?>
         </tbody>
     </table>
 </body>
