@@ -39,12 +39,12 @@ if (isset($_GET['codedit']))
     $queryEdit = "SELECT * FROM filme where cod_filme=".$_GET['codedit'];
     $filme = $pdo->query($queryEdit)->fetch();
     $cod = $_GET['codedit'];
-    $titulo = $_GET['titulo'];
-    $sinopse = $_GET['sinopse'];
-    $lancamento = $_GET['lancamento'];
-    $pais_origem = $_GET['pais_origem'];
-    $duracao = $_GET['duracao'];
-    $preco = $_GET['preco'];
+    $titulo = $filme['titulo'];
+    $sinopse = $filme['sinopse'];
+    $lancamento = $filme['lancamento'];
+    $pais_origem = $filme['pais_origem'];
+    $duracao = $filme['duracao'];
+    $preco = $filme['preco'];
     
 }
 
